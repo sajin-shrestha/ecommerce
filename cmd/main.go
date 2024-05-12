@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/sajin-shrestha/ecom/cmd/api"
+	"github.com/sajin-shrestha/ecommerce/cmd/api"
 )
 
 func main() {
