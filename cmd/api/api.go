@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"log"
 	"net/http"
-	"os/user"
 
 	"github.com/gorilla/mux"
+	"github.com/sajin-shrestha/ecommerce/service/user"
 )
 
 type APIServer struct {
