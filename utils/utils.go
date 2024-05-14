@@ -12,3 +12,7 @@ func ParseJSON(r *http.Request, payload any) error {
 	}
 	return json.NewDecoder(r.Body).Decode(payload)
 }
+
+func WriteJSON(w http.ResponseWriter, status int, v any) error {
+
+}
