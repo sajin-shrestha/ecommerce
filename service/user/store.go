@@ -55,7 +55,7 @@ func NewStore(db *sql.DB) *Store {
 // 	return user, nil
 // }
 
-// uncomment GetUserByEmail and scanRowIntoUser function above if it throws an error and comment below code
+// uncomment GetUserByEmail() and scanRowIntoUser() above if it throws an error and comment below code
 func (s *Store) GetUserByEmail(email string) (*types.User, error) {
 	rows, err := s.db.Query("SELECT * FROM users WHERE email = ?", email)
 	if err != nil {
