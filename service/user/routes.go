@@ -1,9 +1,11 @@
 package user
 
 import (
+	"encoding/json"
 	"net/http"
 
-	"github.com/gorilla/mux"
+	"github.com/sajin-shrestha/ecommerce/types"
+	"github.com/sajin-shrestha/ecommerce/utils"
 )
 
 type Handler struct {
@@ -25,9 +27,13 @@ func (h *Handler) handleLogin(w http.ResponseWriter, r *http.Request) {
 
 func (h *Handler) handleRegister(w http.ResponseWriter, r *http.Request) {
 	// get JSON payload
+	var payload types.RegisterUserPayLoad
+	if err := utils.ParseJSON(r.Body, payload); err != nil {
+		
+	}
 
 	// check if the user exists
-	
+
 	// if it doesnot we create the new user
 
 }
