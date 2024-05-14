@@ -15,6 +15,47 @@ func NewStore(db *sql.DB) *Store {
 	return &Store{db: db}
 }
 
+// func (s *Store) GetUserByEmail(email string) (*types.User, error) {
+// 	rows, err := s.db.Query("SELECT * FROM users WHERE email = ?", email)
+// 	if err != nil {
+// 		return nil, err
+// 	}
+// 	defer rows.Close()
+
+// 	u := new(types.User)
+
+// 	for rows.Next() {
+// 		u, err := scanRowIntoUser(rows)
+// 		if err != nil {
+// 			return nil, err
+// 		}
+// 	}
+
+// 	if u.ID == 0 {
+// 		return nil, fmt.Errorf("user not found")
+// 	}
+
+// 	return u, nil
+// }
+
+// func scanRowIntoUser(rows *sql.Rows) (*types.User, error) {
+// 	user := new(types.User)
+// 	err := rows.Scan(
+// 		&user.ID,
+// 		&user.FirstName,
+// 		&user.LastName,
+// 		&user.Email,
+// 		&user.Password,
+// 		&user.CreatedAt,
+// 	)
+// 	if err != nil {
+// 		return nil, err
+// 	}
+
+// 	return user, nil
+// }
+
+// uncomment GetUserByEmail and scanRowIntoUser function above if it throws an error and comment below code
 func (s *Store) GetUserByEmail(email string) (*types.User, error) {
 	rows, err := s.db.Query("SELECT * FROM users WHERE email = ?", email)
 	if err != nil {
@@ -22,10 +63,10 @@ func (s *Store) GetUserByEmail(email string) (*types.User, error) {
 	}
 	defer rows.Close()
 
-	u := new(types.User)
-	
+	u := &types.User{} // Initialize u outside the loop
+
 	for rows.Next() {
-		u, err := scanRowIntoUser(rows)
+		err := scanRowIntoUser(rows, u)
 		if err != nil {
 			return nil, err
 		}
@@ -38,8 +79,7 @@ func (s *Store) GetUserByEmail(email string) (*types.User, error) {
 	return u, nil
 }
 
-func scanRowIntoUser(rows *sql.Rows) (*types.User, error) {
-	user := new(types.User)
+func scanRowIntoUser(rows *sql.Rows, user *types.User) error {
 	err := rows.Scan(
 		&user.ID,
 		&user.FirstName,
@@ -49,10 +89,10 @@ func scanRowIntoUser(rows *sql.Rows) (*types.User, error) {
 		&user.CreatedAt,
 	)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return user, nil
+	return nil
 }
 
 func (s *Store) GetUserByID(id int) (*types.User, error) {
