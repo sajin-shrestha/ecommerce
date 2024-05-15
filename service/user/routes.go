@@ -23,10 +23,12 @@ func (h *Handler) RegisterRoutes(router *mux.Router) {
 	router.HandleFunc("/register", h.handleRegister).Methods("POST")
 }
 
+// function to handle user login
 func (h *Handler) handleLogin(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// function to handle user register
 func (h *Handler) handleRegister(w http.ResponseWriter, r *http.Request) {
 	// get JSON payload
 	var payload types.RegisterUserPayLoad
