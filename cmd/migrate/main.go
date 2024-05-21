@@ -12,6 +12,8 @@ import (
 	"github.com/sajin-shrestha/ecommerce/db"
 )
 
+// currently error while creating a migration database
+// visit official migrate go package for further detail
 func main() {
 	db, err := db.NewMySQLStorage(mysqlCfg.Config{
 		User:                 config.Envs.DBUser,
