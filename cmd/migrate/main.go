@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 
+	// importing config file from myb file directory
 	mysqlCfg "github.com/go-sql-driver/mysql"
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/mysql"
