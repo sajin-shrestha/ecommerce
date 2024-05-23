@@ -7,8 +7,13 @@ test:
 run: build
 	@./bin/ecommerce
 
+
+# MIGRATE_CMD := $(shell which migrate)
+# @$(MIGRATE_CMD) create -ext sql -dir cmd/migrate/migrations $(filter-out $@,$(MAKECMDGOALS))
+
 migration:
 	@migrate create -ext sql -dir cmd/migrate/migrations $(filter-out $@,$(MAKECMDGOALS))
+
 
 migrate-up:
 	@go run cmd/migrate/main.go up
