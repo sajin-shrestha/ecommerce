@@ -9,6 +9,7 @@ import (
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/mysql"
 
+	// need to add underscore symbol here to make it work
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 	"github.com/sajin-shrestha/ecommerce/config"
 	"github.com/sajin-shrestha/ecommerce/db"
