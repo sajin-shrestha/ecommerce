@@ -16,6 +16,7 @@ import (
 
 // currently error while creating a migration database
 // visit official migrate go package for further detail
+// to fix the make file error, install go migrate in the systen and add its path variable in bash or zshrc
 func main() {
 	db, err := db.NewMySQLStorage(mysqlCfg.Config{
 		User:                 config.Envs.DBUser,
