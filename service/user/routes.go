@@ -6,6 +6,7 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gorilla/mux"
+	"github.com/sajin-shrestha/ecommerce/config"
 	"github.com/sajin-shrestha/ecommerce/service/auth"
 	"github.com/sajin-shrestha/ecommerce/types"
 	"github.com/sajin-shrestha/ecommerce/utils"
@@ -54,8 +55,16 @@ func (h *Handler) handleLogin(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// jwt authentication with token
+	secret := []byte(config.Envs.JWTSecret)
+	token, err := auth.CreateJWT(secret, u.ID)
+	if err != nil {
+		utils.WriteError(w, http.StatusInternalServerError, err)
+		return
+	}
+
 	utils.WriteJSON(w, http.StatusOK, map[string]string{
-		"token": "",
+		"token": token,
 	})
 }
 

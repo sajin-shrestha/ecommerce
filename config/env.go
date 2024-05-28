@@ -16,6 +16,7 @@ type Config struct {
 	DBAddress              string
 	DBName                 string
 	JWTExpirationInSeconds int64
+	JWTSecret              string
 }
 
 var Envs = initConfig() // global variable to access env variables
@@ -43,6 +44,7 @@ func initConfig() Config {
 		DBPassword:             os.Getenv("DB_PASSWORD"),
 		DBAddress:              os.Getenv("DB_HOST") + ":" + os.Getenv("DB_PORT"),
 		DBName:                 os.Getenv("DB_NAME"),
+		JWTSecret:              os.Getenv("JWT_SECRET"),
 		JWTExpirationInSeconds: jwtExp,
 	}
 
