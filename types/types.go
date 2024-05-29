@@ -8,6 +8,7 @@ type UserStore interface {
 	CreateUser(User) error
 }
 
+// user format
 type User struct {
 	ID        int       `json:"id"`
 	FirstName string    `json:"firstname"`
@@ -17,6 +18,7 @@ type User struct {
 	CreatedAt time.Time `json:"createdAt"`
 }
 
+// reister-user format
 type RegisterUserPayLoad struct {
 	FirstName string `json:"firstname" validate:"required"`
 	LastName  string `json:"lastname" validate:"required"`
@@ -24,6 +26,7 @@ type RegisterUserPayLoad struct {
 	Password  string `json:"password" validate:"required,min=3,max=130"`
 }
 
+// login-user format
 type LoginUserPayLoad struct {
 	Email    string `json:"email" validate:"required,email"`
 	Password string `json:"password" validate:"required"`
