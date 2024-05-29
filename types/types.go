@@ -18,7 +18,7 @@ type Product struct {
 	Description string    `json:"description"`
 	Image       string    `json:"image"`
 	Price       float64   `json:"price"`
-	Quantity    int       `json:"quantity"` // not a best practice as there may occur conflict
+	Quantity    int       `json:"quantity"` // not a best practice as there may occur conflict when handeling large customers
 	CreatedAt   time.Time `json:"createdAt"`
 }
 
