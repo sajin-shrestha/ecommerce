@@ -8,6 +8,20 @@ type UserStore interface {
 	CreateUser(User) error
 }
 
+type ProductStore interface {
+	GetProducts() ([]Product, error)
+}
+
+type Product struct {
+	ID          int       `json:"id"`
+	Name        string    `json:"name"`
+	Description string    `json:"description"`
+	Image       string    `json:"image"`
+	Price       float64   `json:"price"`
+	Quantity    int       `json:"quantity"` // not a best practice as there may occur conflict
+	CreatedAt   time.Time `json:"createdAt"`
+}
+
 type User struct {
 	ID        int       `json:"id"`
 	FirstName string    `json:"firstname"`
