@@ -33,6 +33,9 @@ func (s *Store) GetProducts() ([]types.Product, error) {
 	return products, nil
 }
 
+// similarly to create a addProducts, you need to do some add operations
+// available in official document
+
 func scanRowsIntoProduct(rows *sql.Rows) (*types.Product, error) {
 	product := new(types.Product)
 
