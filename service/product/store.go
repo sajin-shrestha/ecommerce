@@ -14,6 +14,7 @@ func NewStore(db *sql.DB) *Store {
 	return &Store{db: db}
 }
 
+// get product function
 func (s *Store) GetProducts() ([]types.Product, error) {
 	rows, err := s.db.Query("SELECT * FROM products")
 	if err != nil {
