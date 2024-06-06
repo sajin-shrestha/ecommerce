@@ -17,6 +17,7 @@ type OrderStore interface {
 	CreateOrderItem(OrderItem) error
 }
 
+// Order JSON-format
 type Order struct {
 	ID        int       `json:"id"`
 	UserID    int       `json:"userID"`
@@ -26,6 +27,7 @@ type Order struct {
 	CreatedAt time.Time `json:"createdAt"`
 }
 
+// Order-Item JSON-format
 type OrderItem struct {
 	ID        int       `json:"id"`
 	OrderID   int       `json:"orderID"`
@@ -35,6 +37,7 @@ type OrderItem struct {
 	CreatedAt time.Time `json:"createdAt"`
 }
 
+// Product JSON-format
 type Product struct {
 	ID          int       `json:"id"`
 	Name        string    `json:"name"`
@@ -45,6 +48,7 @@ type Product struct {
 	CreatedAt   time.Time `json:"createdAt"`
 }
 
+// User JSON-format
 type User struct {
 	ID        int       `json:"id"`
 	FirstName string    `json:"firstname"`
@@ -54,6 +58,7 @@ type User struct {
 	CreatedAt time.Time `json:"createdAt"`
 }
 
+// Registeration JSON-format
 type RegisterUserPayLoad struct {
 	FirstName string `json:"firstname" validate:"required"`
 	LastName  string `json:"lastname" validate:"required"`
@@ -61,6 +66,7 @@ type RegisterUserPayLoad struct {
 	Password  string `json:"password" validate:"required,min=3,max=130"`
 }
 
+// Login-user JSON-format
 type LoginUserPayLoad struct {
 	Email    string `json:"email" validate:"required,email"`
 	Password string `json:"password" validate:"required"`
