@@ -71,3 +71,14 @@ type LoginUserPayLoad struct {
 	Email    string `json:"email" validate:"required,email"`
 	Password string `json:"password" validate:"required"`
 }
+
+// cart item
+type CartItem struct {
+	ProductID int `json:"productID"`
+	Quantity  int `json:"quantity"`
+}
+
+// cart checkout payload
+type CartCheckoutPayload struct {
+	Items []CartItem `json:"items" validate:"required"`
+}
