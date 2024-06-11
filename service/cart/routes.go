@@ -37,5 +37,5 @@ func (h *Handler) handleCheckout(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// get products
-	ps, err := h.productStore.GetProducts(produc)
+	ps, err := h.productStore.GetProducts(product)
 }
