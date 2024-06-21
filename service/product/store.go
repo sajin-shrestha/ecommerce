@@ -36,6 +36,16 @@ func (s *Store) GetProducts() ([]types.Product, error) {
 	return products, nil
 }
 
+func (s *Store) UpdateProduct(product types.Product) error {
+	_, err := s.db.Exec("UPDATE products SET name = ?, price = ?, image = ?, description = ?, quantity = ? WHERE id = ?", product.Name, product.Price, product.Image, product.Description, product.Quantity, product.ID)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // similarly to create a addProducts, you need to do some add operations
 // available in official document
 
@@ -58,8 +68,8 @@ func scanRowsIntoProduct(rows *sql.Rows) (*types.Product, error) {
 	return product, nil
 }
 
-func (s *Store) GetProductsByID(productIDs []int) ([]types.Product, error) {
-	placeholders := strings.Repeat(",?", len(productIDs) - 1)
+func (s *Store) GetProductsByIDs(productIDs []int) ([]types.Product, error) {
+	placeholders := strings.Repeat(",?", len(productIDs)-1)
 	query := fmt.Sprintf("SELECT * FROM products WHERE id IN (?%s)", placeholders)
 
 	// convert productIDs to []interface{}
